@@ -66,7 +66,7 @@ jobs:
           # shellcheck disable=SC2086
           terraform \
           -chdir="${{inputs.root_module_folder_relative_path}}" \
-          show tfplan -json > tfplan.json
+          show -json tfplan > tfplan.json
 
       - name: Create Module Artifact
         run: |
