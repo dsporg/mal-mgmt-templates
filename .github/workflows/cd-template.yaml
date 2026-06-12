@@ -63,6 +63,11 @@ jobs:
           -input=false \
           ${{ inputs.terraform_action == 'destroy' && '-destroy' || '' }}
 
+          # shellcheck disable=SC2086
+          terraform \
+          -chdir="${{inputs.root_module_folder_relative_path}}" \
+          show tfplan -json > tfplan.json
+
       - name: Create Module Artifact
         run: |
           $stagingDirectory = "staging"
